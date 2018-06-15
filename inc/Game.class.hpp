@@ -22,8 +22,13 @@
 # define Y_CASE_NEW (this->_new_height - 2)
 # define X_CASE_NEW ((this->_new_width - MENU_W) / 2)
 
-# define MENU_SIZE 4
+# define MENU_SIZE 5
 # define PAUSE_SIZE 2
+
+# define ATOD 9
+# define ATOA 8
+# define DTOA -8
+# define DTOD -9
 
 class		Game {
 
@@ -64,6 +69,7 @@ private:
 	int			_x;
 	bool		_isplaying;
 	char		_char;
+	int			_cycles;
 
 	int							_menuindex;
 	static std::string const	_menutxt[MENU_SIZE];
@@ -77,7 +83,10 @@ private:
 	void		_display_selection( void ) const;
 	void		_draw_grid( void ) const;
 	void		_clean_all( void ) const;
-	void		_update_map( int y, int x);
+	void		_update_map( int y, int x );
+	void		_play( void );
+	int			_check_neighbors( int y, int x ) const;
+	void		_clean_cells( void );
 
 	char **		_map;
 };
